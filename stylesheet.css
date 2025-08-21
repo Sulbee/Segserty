@@ -292,7 +292,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Section image block */
 .hero {
   padding: 80px 0;
-  background-color: var(--white);
+  background-color: #E6F2EF;
   background-image: url("assets/HERO\ background.png");
   background-size: cover;       /* makes it fill the section */
   background-position: center;  /* centers the image */
@@ -301,6 +301,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-container {
     max-width: 1200px;
+    height: 720px;
     margin: 0 auto;
     padding: 0 20px;
     display: grid;
@@ -312,8 +313,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    font-weight: 600;
+    font-size: 4rem;
+    font-weight: 700;
     color: #1E1E1E;
     margin-bottom: 1.5rem;
     line-height: 1.1;
@@ -359,8 +360,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-img {
-    max-width: 100%;
-    height: auto;
+    max-width: 622px;
+    height: 560px;
     border-radius: 16px;
     /*box-shadow: var(--shadow-hover);*/
 }
