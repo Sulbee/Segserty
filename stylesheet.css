@@ -292,6 +292,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Section image block */
 .hero {
   padding: 80px 0;
+  min-height: 720px;
   background-color: #E6F2EF;
   background-image: url("assets/HERO\ background.png");
   background-size: cover;       /* makes it fill the section */
@@ -301,7 +302,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-container {
     max-width: 1200px;
-    height: 720px;
+    min-height: 720px;
     margin: 0 auto;
     padding: 0 20px;
     display: grid;
@@ -387,10 +388,28 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.6;
     margin-bottom: 30px;
     font-weight: 400;
+    background-image: url("assets/QUOTE.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; /* or cover, depending on effect */
+    padding: 2.5rem 2rem; /* add breathing space */
+    position: relative;
+    z-index: 1;
 }
 
 .impact-description strong {
     font-weight: 600;
+}
+
+/* Ensure the text floats above background */
+.impact-description p {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
 
 .impact-button {
@@ -542,24 +561,78 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* Final Quote Section */
-.final-quote-container {
+.final-quote-container1 {
+    max-width: 1000px;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    line-height: 1.8;
+
+    background-image: url("assets/QUOTE.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; /* or cover, depending on effect */
+    padding: 4rem 2rem; /* add breathing space */
+    position: relative;
+    z-index: 1;
+}
+
+    .final-quote1  {
+    font-style: italic;
+    font-weight: 400;
+    color: #1E1E1E;
+    font-family: 'Space Grotesk', sans-serif;
+
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+
+
+.final-quote-container2 {
     max-width: 1000px;
     margin: 0 auto;
     font-size: 1.6rem;
     line-height: 1.8;
     padding: 0 20px;
+
+    background-image: url("assets/QUOTE.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; /* or cover, depending on effect */
+    padding: 4rem 2rem; /* add breathing space */
+    position: relative;
+    z-index: 1;
 }
 
-.final-quote {
+.final-quote2 {
     font-style: italic;
     font-weight: 400;
     color: #1E1E1E;
     font-family: 'Space Grotesk', sans-serif;
+
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
 
+
+
 .final-quote strong {
-    font-weight: 600;
+    font-weight: 400;
 }
+
+
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -622,10 +695,27 @@ h1, h2, h3, h4, h5, h6 {
         max-width: 200px;
     }
 
-    .final-quote-container {
+    .final-quote-container1, .final-quote-container2 {
         font-size: 1.3rem;
         padding: 0 15px;
     }
+
+    .impact-description,
+    .final-quote-container1,
+    .final-quote-container2 {
+    background-size: contain; /* fill better on smaller screens */
+    background-position: top bottom; 
+    padding: 2.5rem 1.5rem; /* reduce spacing */
+   }
+  
+   .impact-description p,
+   .final-quote1,
+   .final-quote2 {
+    font-size: 1rem; /* scale text */
+    line-height: 1.5;
+    max-width: 90%;
+  }
+
 }
 
 
@@ -931,11 +1021,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-header {
     margin-bottom: 1.5rem;
+    background-color: #E6F2EF;
+    padding: 8px 16px;
+    border-radius: 25px;
+    display: inline-block;
 }
 
 .update-date,
 .next-report {
-    color: #666;
+    color: #184944;
     font-size: 0.9rem;
     font-weight: 500;
 }
@@ -1578,9 +1672,17 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center;
         gap: 2rem;
     }
+    .hero-img {
+        max-width: 100%;
+        height: auto;
+    }
 
     .hero-title {
         font-size: 2.5rem;
+    }
+
+    .hero-title span{
+        display: block;
     }
 
     .section-title {
@@ -1825,7 +1927,7 @@ a:focus {
 }
 
 
-/* === MOBILE HEADER FIX === */
+/* === MOBILE HEADER === */
 @media (max-width: 768px) {
   /* keep the top bar as a single row */
   .nav-container {
@@ -1866,7 +1968,7 @@ a:focus {
   }
 }
 
-/* === MOBILE TESTIMONIALS CAROUSEL FIX === */
+/* === MOBILE TESTIMONIALS CAROUSEL === */
 @media (max-width: 768px) {
   .testimonials-track {
     /* force horizontal row + scroll */
@@ -1905,7 +2007,8 @@ a:focus {
     gap: 1rem;
   }
   .socials-button {
-    width: 100%;
+    padding: 16px 32px;
+    margin-bottom: 1.5rem;
     text-align: center;
   }
   .social-icons {
