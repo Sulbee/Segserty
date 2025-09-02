@@ -1618,12 +1618,16 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        gap: 1rem;
-        height: auto;
-        min-height: 80px;
-    }
+    
+ /* keep the top bar as a single row */
+  .nav-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 70px;
+    gap: 0.75rem;
+  }
+
 
     .nav-left {
         width: 100%;
@@ -1638,17 +1642,21 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav-menu {
-        position: fixed;
+        position: absolute;
         left: -100%;
-        top: 70px;
+        top: 0px;
         flex-direction: column;
         background-color: var(--white);
-        width: 100%;
+        /* width: 100%; */
         text-align: center;
         transition: 0.3s;
         box-shadow: var(--shadow);
         padding: 2rem 0;
         order: 3;
+        min-height: max-content;
+        min-width: 90%;
+        border-radius: 0 0 10px 10px;
+        
     }
 
     .nav-menu.active {
@@ -1666,6 +1674,49 @@ h1, h2, h3, h4, h5, h6 {
     .nav-cta {
         display: none;
     }
+
+/* logo area stays on the left */
+  .nav-left {
+    order: 1;
+    flex: 0 1 auto;   /* don't stretch full width */
+    width: auto;
+    justify-content: flex-start;
+  }
+
+  /* hamburger lives on the right */
+  .nav-toggle {
+    order: 2;
+    display: flex;
+    position: static;   /* no absolute/relative offsets */
+    margin-left: auto;  /* pushes it to the right edge */
+    transform: none;
+  }
+
+  /* hide desktop CTA on mobile, keep current behavior */
+  .nav-cta { display: none; }
+
+  /* slide-in menu stays underneath the 70px header */
+  .nav-menu {
+    top: 70px;     /* matches .nav-container height above */
+    left: -100%;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     .hero-container {
         grid-template-columns: 1fr;
@@ -1926,47 +1977,6 @@ a:focus {
     box-shadow: var(--shadow-hover);
 }
 
-
-/* === MOBILE HEADER === */
-@media (max-width: 768px) {
-  /* keep the top bar as a single row */
-  .nav-container {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 70px;
-    gap: 0.75rem;
-  }
-
-  /* logo area stays on the left */
-  .nav-left {
-    order: 1;
-    flex: 0 1 auto;   /* don't stretch full width */
-    width: auto;
-    justify-content: flex-start;
-  }
-
-  /* hamburger lives on the right */
-  .nav-toggle {
-    order: 2;
-    display: flex;
-    position: static;   /* no absolute/relative offsets */
-    margin-left: auto;  /* pushes it to the right edge */
-    transform: none;
-  }
-
-  /* hide desktop CTA on mobile, keep current behavior */
-  .nav-cta { display: none; }
-
-  /* slide-in menu stays underneath the 70px header */
-  .nav-menu {
-    top: 70px;     /* matches .nav-container height above */
-    left: -100%;
-  }
-  .nav-menu.active {
-    left: 0;
-  }
-}
 
 /* === MOBILE TESTIMONIALS CAROUSEL === */
 @media (max-width: 768px) {
