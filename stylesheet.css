@@ -1491,34 +1491,48 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.2);
 }
 
-/* ===== SOCIAL CARDS CAROUSEL ===== */
+/* Social cards carousles */
 .social-cards {
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+/* moving track */
+.social-track {
   display: flex;
   gap: 1.5rem;
-  overflow-x: auto;        /* horizontal scroll */
-  scroll-behavior: smooth; /* smooth scroll */
-  padding: 1rem 0;
-  scrollbar-width: none;   /* hide scrollbar - Firefox */
-  -ms-overflow-style: none; /* hide scrollbar - IE/Edge */
+  width: max-content;                 /* track grows to content */
+  animation: social-scroll 30s linear infinite;
 }
 
-.social-cards::-webkit-scrollbar {
-  display: none; /* hide scrollbar - Chrome/Safari */
-}
+/* pause on hover (optional) */
+.social-cards:hover .social-track { animation-play-state: paused; }
 
-.social-cards img {
-  flex: 0 0 auto;   /* prevent shrinking, force inline */
-  width: 260px;     /* card width */
+/* cards */
+.social-track img {
+  flex: 0 0 auto;
+  width: 260px;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.social-cards img:hover {
+.social-track img:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
+
+/* keyframes: move left by half the (duplicated) track */
+@keyframes social-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }  /* because we duplicated the set */
+}
+
+/* accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .social-track { animation: none; }
+}
+
 
 
 /* ===== FOOTER ===== */
@@ -1628,14 +1642,13 @@ h1, h2, h3, h4, h5, h6 {
     gap: 0.75rem;
   }
 
-
-    .nav-left {
-        width: 100%;
-        justify-content: space-between;
-        gap: 1rem;
-        height: auto;
-        order: 2;
-    }
+    /* logo area stays on the left */
+  /* .nav-left {
+    order: 1;
+    flex: 0 1 auto;   /* don't stretch full width 
+    width: auto;
+    justify-content: flex-start;
+  } */
 
     .nav-cta {
         order: 1;
@@ -1654,7 +1667,7 @@ h1, h2, h3, h4, h5, h6 {
         padding: 2rem 0;
         order: 3;
         min-height: max-content;
-        min-width: 90%;
+        min-width: 85%;
         border-radius: 0 0 10px 10px;
         
     }
@@ -1674,14 +1687,6 @@ h1, h2, h3, h4, h5, h6 {
     .nav-cta {
         display: none;
     }
-
-/* logo area stays on the left */
-  .nav-left {
-    order: 1;
-    flex: 0 1 auto;   /* don't stretch full width */
-    width: auto;
-    justify-content: flex-start;
-  }
 
   /* hamburger lives on the right */
   .nav-toggle {

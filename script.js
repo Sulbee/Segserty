@@ -438,6 +438,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+const scroller = document.querySelector('.social-cards');
+  let rafId;
+  let speed = 0.5; // pixels per frame (~30s loop depending on width)
+
+  function tick() {
+    scroller.scrollLeft += speed;
+    // when we reach the end, jump back to start
+    if (scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth) {
+      scroller.scrollLeft = 0;
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  // pause on hover (desktop)
+  scroller.addEventListener('mouseenter', () => cancelAnimationFrame(rafId));
+  scroller.addEventListener('mouseleave', () => tick());
+
+  // start
+  tick();
+
+
 // Timeline functionality
 document.addEventListener('DOMContentLoaded', function() {
     const timelineTrack = document.querySelector('.timeline-track');
